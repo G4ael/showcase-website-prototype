@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(python --version)",
+      "mcp__0de09544-511f-4bef-95c6-7ab50056103a__list_teams",
+      "mcp__0de09544-511f-4bef-95c6-7ab50056103a__list_projects",
+      "mcp__0de09544-511f-4bef-95c6-7ab50056103a__deploy_to_vercel",
+      "PowerShell($r = Invoke-WebRequest -Uri 'https://mostruario-marcenaria.vercel.app' -UseBasicParsing; \"Status: $\\($r.StatusCode\\)\"; \"Tamanho: $\\($r.Content.Length\\) bytes\"; \"Titulo ok: $\\($r.Content.Contains\\('Marcenaria Bom Madeiro'\\)\\)\"; \"Galeria ok: $\\($r.Content.Contains\\('id=\\\\\"galeria\\\\\"'\\)\\)\"; \"Admin ok: $\\($r.Content.Contains\\('modal-login'\\)\\)\"; \"Carrossel ok: $\\($r.Content.Contains\\('carrossel-trilho'\\)\\)\")",
+      "PowerShell(Start-Sleep -Seconds 6; $r = Invoke-WebRequest -Uri 'https://mostruario-marcenaria.vercel.app' -UseBasicParsing; $c = $r.Content; 'Status: ' + $r.StatusCode; 'Tem regra corrigida \\(display: none na barra\\): ' + $c.Contains\\('display: none; gap: 12px'\\); 'Tem regra body.modo-admin .admin-barra: ' + $c.Contains\\('body.modo-admin .admin-barra { display: flex; }'\\); 'Tem signOut blindado: ' + $c.Contains\\('if \\(fb.signOut && fb.auth\\)'\\))"
+    ]
+  }
+}

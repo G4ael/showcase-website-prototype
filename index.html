@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marcenaria Bom Madeiro — Móveis sob medida</title>
+  <meta name="description" content="Mostruário de móveis sob medida em madeira: cozinhas planejadas, guarda-roupas, mesas, painéis e muito mais.">
+
+  <!-- Fontes (carregam da internet; se ficar offline, usa as fontes do sistema) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       VARIÁVEIS DE COR — mude aqui para alterar o tema inteiro
+       ============================================================ */
+    :root {
+      --madeira:        #8a5a33;   /* tom principal de madeira */
+      --madeira-escura: #2e1e12;   /* quase-preto amadeirado   */
+      --madeira-clara:  #c89b6d;   /* mel / verniz claro       */
+      --creme:          #faf5ec;   /* fundo claro              */
+      --creme-2:        #f1e7d7;   /* fundo alternado          */
+      --texto:          #3a2d20;
+      --texto-suave:    #7a6a58;
+      --destaque:       #c9873f;   /* âmbar para botões/links  */
+      --branco:         #ffffff;
+      --sombra: 0 10px 30px rgba(46, 30, 18, .12);
+      --raio: 14px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      /* compensa a navbar fixa ao navegar pelas âncoras */
+      scroll-padding-top: 82px;
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      color: var(--texto);
+      background: var(--creme);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; line-height: 1.2; }
+
+    img, svg { max-width: 100%; display: block; }
+
+    .container { width: min(1160px, 92%); margin-inline: auto; }
+
+    section { padding: 84px 0; }
+
+    /* Título padrão das seções */
+    .secao-titulo { text-align: center; margin-bottom: 48px; }
+    .secao-titulo .rotulo {
+      display: inline-block;
+      font-size: .8rem; font-weight: 600; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--destaque);
+      margin-bottom: 10px;
+    }
+    .secao-titulo h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); color: var(--madeira-escura); }
+    .secao-titulo p  { max-width: 560px; margin: 12px auto 0; color: var(--texto-suave); }
+
+    /* ============================================================
+       NAVBAR
+       ============================================================ */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(46, 30, 18, .92);
+      backdrop-filter: blur(8px);
+      transition: box-shadow .3s;
+    }
+    .navbar.rolou { box-shadow: 0 4px 18px rgba(0,0,0,.25); }
+
+    .navbar-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.35rem; font-weight: 700; color: var(--creme);
+      text-decoration: none; display: flex; align-items: center; gap: 10px;
+    }
+    .logo svg { width: 30px; height: 30px; }
+    .logo em { color: var(--madeira-clara); font-style: normal; }
+
+    .menu { display: flex; gap: 6px; list-style: none; }
+    .menu a {
+      display: block; padding: 10px 16px;
+      color: #e9ddcc; text-decoration: none; font-size: .95rem; font-weight: 500;
+      border-radius: 8px; transition: color .2s, background .2s;
+    }
+    .menu a:hover { color: var(--branco); background: rgba(255,255,255,.08); }
+    .menu a.ativo { color: var(--madeira-clara); }
+
+    /* Botão hambúrguer (aparece só no celular) */
+    .hamburguer {
+      display: none; background: none; border: none; cursor: pointer;
+      width: 44px; height: 44px; border-radius: 8px;
+    }
+    .hamburguer span {
+      display: block; width: 24px; height: 2px; margin: 5px auto;
+      background: var(--creme); transition: transform .3s, opacity .3s;
+    }
+    .hamburguer.aberto span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburguer.aberto span:nth-child(2) { opacity: 0; }
+    .hamburguer.aberto span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ============================================================
+       HERO (topo)
+       ============================================================ */
+    .hero {
+      min-height: 100svh;
+      display: flex; align-items: center;
+      padding: 140px 0 80px;
+      background:
+        radial-gradient(ellipse at 20% 10%, rgba(200,155,109,.25), transparent 55%),
+        linear-gradient(160deg, #241609 0%, #3a2412 45%, #56381d 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    /* “veios de madeira” decorativos no fundo */
+    .hero::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        100deg,
+        transparent 0 26px,
+        rgba(255, 235, 205, .035) 26px 28px
+      );
+      pointer-events: none;
+    }
+
+    .hero-inner { position: relative; z-index: 1; max-width: 720px; }
+
+    .hero .rotulo {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: .82rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--madeira-clara); margin-bottom: 18px;
+    }
+    .hero .rotulo::before { content: ""; width: 34px; height: 2px; background: var(--destaque); }
+
+    .hero h1 {
+      font-size: clamp(2.3rem, 6vw, 4rem);
+      color: var(--creme); margin-bottom: 20px;
+    }
+    .hero h1 em { font-style: normal; color: var(--destaque); }
+
+    .hero p { color: #d9c9b2; font-size: 1.1rem; max-width: 540px; margin-bottom: 34px; }
+
+    .hero-acoes { display: flex; flex-wrap: wrap; gap: 14px; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: 999px;
+      font-weight: 600; font-size: .98rem; text-decoration: none;
+      transition: transform .2s, box-shadow .2s, background .2s;
+      cursor: pointer; border: none;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primario { background: var(--destaque); color: #fff; box-shadow: 0 8px 22px rgba(201,135,63,.4); }
+    .btn-primario:hover { background: #d69549; }
+    .btn-contorno { border: 1.5px solid rgba(255,255,255,.4); color: var(--creme); }
+    .btn-contorno:hover { border-color: var(--creme); background: rgba(255,255,255,.06); }
+
+    /* faixa de números logo abaixo do hero */
+    .hero-numeros {
+      display: flex; flex-wrap: wrap; gap: 40px; margin-top: 58px;
+    }
+    .hero-numeros div strong {
+      display: block; font-family: 'Playfair Display', serif;
+      font-size: 1.9rem; color: var(--creme);
+    }
+    .hero-numeros div span { font-size: .88rem; color: #bda688; }
+
+    /* ============================================================
+       PRODUTOS (o coração do mostruário)
+       ============================================================ */
+    #produtos { background: var(--creme); }
+
+    .filtros {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 10px; margin-bottom: 42px;
+    }
+    .filtros button {
+      padding: 9px 20px; border-radius: 999px; cursor: pointer;
+      border: 1.5px solid #d8c6ab; background: transparent;
+      font-family: inherit; font-size: .9rem; font-weight: 500; color: var(--texto-suave);
+      transition: all .2s;
+    }
+    .filtros button:hover { border-color: var(--destaque); color: var(--destaque); }
+    .filtros button.ativo {
+      background: var(--madeira-escura); border-color: var(--madeira-escura); color: var(--creme);
+    }
+
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 26px;
+    }
+
+    .produto {
+      background: var(--branco); border-radius: var(--raio); overflow: hidden;
+      box-shadow: var(--sombra); cursor: pointer;
+      transition: transform .25s, box-shadow .25s, opacity .3s;
+    }
+    .produto:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(46,30,18,.18); }
+    .produto.escondido { display: none; }
+
+    /*
+      A "foto" do produto. Enquanto não houver fotos reais, usamos um
+      SVG desenhado com tons de madeira. Para usar fotos de verdade,
+      veja o comentário na seção PRODUTOS do HTML.
+    */
+    .produto-img {
+      position: relative; aspect-ratio: 4 / 3;
+      background: linear-gradient(140deg, var(--a, #9a6b3f), var(--b, #6d4426));
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .produto-img::before { /* textura de veios */
+      content: "";
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        95deg, transparent 0 18px, rgba(255,240,215,.06) 18px 20px
+      );
+    }
+    /* cada .foto é uma imagem do produto: a primeira aparece no card,
+       todas aparecem no carrossel ao ampliar */
+    .produto-img .foto {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .produto-img .foto ~ .foto { display: none; }
+    .produto-img .foto svg { width: 58%; height: auto; }
+    .produto-img .foto img { width: 100%; height: 100%; object-fit: cover; }
+
+    .produto-img .lupa {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      background: rgba(46,30,18,.45); opacity: 0; transition: opacity .25s;
+    }
+    .produto:hover .lupa { opacity: 1; }
+    .lupa span {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: var(--creme); color: var(--madeira-escura);
+      display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
+    }
+
+    .produto-info { padding: 18px 20px 22px; }
+    .produto-info .categoria {
+      font-size: .74rem; font-weight: 600; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--destaque);
+    }
+    .produto-info h3 { font-size: 1.18rem; margin: 6px 0 6px; color: var(--madeira-escura); }
+    .produto-info p { font-size: .92rem; color: var(--texto-suave); }
+
+    /* ============================================================
+       LIGHTBOX (imagem ampliada ao clicar no produto)
+       ============================================================ */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 2000;
+      background: rgba(24, 15, 8, .88);
+      display: none; align-items: center; justify-content: center;
+      padding: 24px;
+    }
+    .lightbox.aberto { display: flex; }
+
+    .lightbox-caixa {
+      background: var(--branco); border-radius: var(--raio);
+      max-width: 860px; width: 100%; max-height: 90vh; overflow: auto;
+      animation: aparecer .25s ease;
+    }
+    @keyframes aparecer {
+      from { transform: scale(.95); opacity: 0; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
+
+    .lightbox-img {
+      aspect-ratio: 16 / 9;
+      background: linear-gradient(140deg, var(--a, #9a6b3f), var(--b, #6d4426));
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .lightbox-img::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(95deg, transparent 0 22px, rgba(255,240,215,.06) 22px 24px);
+    }
+    /* ---- carrossel dentro do lightbox ---- */
+    .carrossel-trilho {
+      position: absolute; inset: 0; z-index: 1;
+      display: flex; height: 100%;
+      transition: transform .35s ease;
+    }
+    .carrossel-slide {
+      flex: 0 0 100%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .carrossel-slide svg { width: 38%; height: auto; }
+    .carrossel-slide img { width: 100%; height: 100%; object-fit: cover; }
+
+    .carrossel-seta {
+      position: absolute; top: 50%; transform: translateY(-50%); z-index: 5;
+      width: 44px; height: 44px; border-radius: 50%; border: none; cursor: pointer;
+      background: rgba(250,245,236,.9); color: var(--madeira-escura);
+      font-size: 1.5rem; line-height: 1;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+    }
+    .carrossel-seta:hover { background: var(--creme); }
+    .carrossel-seta.anterior { left: 14px; }
+    .carrossel-seta.proxima  { right: 14px; }
+
+    .carrossel-pontos {
+      position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); z-index: 5;
+      display: flex; gap: 8px;
+    }
+    .carrossel-pontos button {
+      width: 10px; height: 10px; padding: 0;
+      border-radius: 50%; border: none; cursor: pointer;
+      background: rgba(250,245,236,.45);
+      transition: background .2s, transform .2s;
+    }
+    .carrossel-pontos button.ativo { background: var(--creme); transform: scale(1.25); }
+
+    .carrossel-contador {
+      position: absolute; top: 14px; left: 14px; z-index: 5;
+      background: rgba(46,30,18,.55); color: var(--creme);
+      font-size: .8rem; font-weight: 600;
+      padding: 4px 12px; border-radius: 999px;
+    }
+    .carrossel-legenda {
+      position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 5;
+      background: rgba(46,30,18,.55); color: var(--creme);
+      font-size: .82rem; padding: 5px 14px; border-radius: 999px;
+      white-space: nowrap; max-width: 90%; overflow: hidden; text-overflow: ellipsis;
+    }
+
+    .lightbox-texto { padding: 26px 30px 30px; }
+    .lightbox-texto .categoria {
+      font-size: .76rem; font-weight: 600; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--destaque);
+    }
+    .lightbox-texto h3 { font-size: 1.6rem; color: var(--madeira-escura); margin: 6px 0 10px; }
+    .lightbox-texto p  { color: var(--texto-suave); margin-bottom: 20px; }
+
+    .lightbox-fechar {
+      position: absolute; top: 18px; right: 18px; z-index: 10;
+      width: 44px; height: 44px; border-radius: 50%; border: none; cursor: pointer;
+      background: var(--creme); color: var(--madeira-escura); font-size: 1.4rem; line-height: 1;
+    }
+
+    /* ============================================================
+       SOBRE
+       ============================================================ */
+    #sobre { background: var(--creme-2); }
+
+    .sobre-grade {
+      display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center;
+    }
+    .sobre-texto h2 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); color: var(--madeira-escura); margin-bottom: 18px; }
+    .sobre-texto p  { color: var(--texto-suave); margin-bottom: 14px; }
+
+    .diferenciais { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 26px; }
+    .diferencial {
+      background: var(--branco); border-radius: var(--raio); padding: 18px;
+      box-shadow: var(--sombra); display: flex; gap: 12px; align-items: flex-start;
+    }
+    .diferencial .icone {
+      flex-shrink: 0; width: 42px; height: 42px; border-radius: 10px;
+      background: linear-gradient(140deg, var(--madeira-clara), var(--madeira));
+      display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+    }
+    .diferencial strong { display: block; font-size: .95rem; color: var(--madeira-escura); }
+    .diferencial span   { font-size: .84rem; color: var(--texto-suave); }
+
+    /* “retrato” ilustrado da oficina */
+    .sobre-arte {
+      border-radius: var(--raio); overflow: hidden; box-shadow: var(--sombra);
+      background: linear-gradient(150deg, #6d4426, #3a2412);
+      aspect-ratio: 4 / 5; position: relative;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .sobre-arte::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(100deg, transparent 0 24px, rgba(255,240,215,.05) 24px 26px);
+    }
+    .sobre-arte svg { width: 62%; position: relative; }
+
+    /* ============================================================
+       DEPOIMENTOS
+       ============================================================ */
+    .depoimentos-grade {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
+    }
+    .depoimento {
+      background: var(--branco); border-radius: var(--raio); padding: 28px;
+      box-shadow: var(--sombra); display: flex; flex-direction: column; gap: 16px;
+    }
+    .estrelas { color: var(--destaque); letter-spacing: 3px; }
+    .depoimento blockquote { color: var(--texto); font-size: .98rem; }
+    .depoimento footer { display: flex; align-items: center; gap: 12px; margin-top: auto; }
+    .avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(140deg, var(--madeira-clara), var(--madeira));
+      color: #fff; font-weight: 600; display: flex; align-items: center; justify-content: center;
+    }
+    .depoimento footer strong { display: block; font-size: .92rem; color: var(--madeira-escura); }
+    .depoimento footer span   { font-size: .8rem; color: var(--texto-suave); }
+
+    /* ============================================================
+       CONTATO
+       ============================================================ */
+    #contato {
+      background:
+        radial-gradient(ellipse at 80% 0%, rgba(200,155,109,.18), transparent 55%),
+        linear-gradient(160deg, #2a1a0d, #3e2716);
+      color: var(--creme);
+    }
+    #contato .secao-titulo h2 { color: var(--creme); }
+    #contato .secao-titulo p  { color: #cbb99f; }
+
+    .contato-grade {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px; margin-bottom: 46px;
+    }
+    .contato-cartao {
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--raio); padding: 26px; text-align: center;
+      text-decoration: none; color: inherit; transition: background .2s, transform .2s;
+    }
+    a.contato-cartao:hover { background: rgba(255,255,255,.11); transform: translateY(-4px); }
+    .contato-cartao .icone { font-size: 1.7rem; margin-bottom: 10px; }
+    .contato-cartao strong { display: block; font-size: 1rem; margin-bottom: 4px; }
+    .contato-cartao span   { font-size: .9rem; color: #cbb99f; }
+
+    .contato-cta { text-align: center; }
+
+    /* ============================================================
+       RODAPÉ
+       ============================================================ */
+    .rodape {
+      background: #1d1207; color: #a9906f;
+      padding: 26px 0; font-size: .88rem;
+    }
+    .rodape .container {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      align-items: center; justify-content: space-between;
+    }
+    .rodape a { color: var(--madeira-clara); text-decoration: none; }
+
+    /* botão flutuante do WhatsApp */
+    .whats-flutuante {
+      position: fixed; right: 22px; bottom: 22px; z-index: 1500;
+      width: 58px; height: 58px; border-radius: 50%;
+      background: #25d366; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,.3);
+      transition: transform .2s;
+    }
+    .whats-flutuante:hover { transform: scale(1.08); }
+    .whats-flutuante svg { width: 30px; height: 30px; }
+
+    /* ============================================================
+       ÁREA DO LOJISTA (admin) — barra, modais e formulários
+       ============================================================ */
+    .admin-barra {
+      position: fixed; left: 50%; transform: translateX(-50%); bottom: 18px; z-index: 1600;
+      max-width: calc(100% - 24px);
+      background: var(--madeira-escura); color: var(--creme);
+      border-radius: 999px; padding: 10px 18px;
+      /* Escondida por padrão. Só aparece quando o lojista faz login
+         (o <body> ganha a classe .modo-admin). Importante NÃO usar
+         "display: flex" aqui direto, senão ele sobrescreveria o
+         atributo hidden e a barra ficaria visível para os clientes. */
+      display: none; gap: 12px; align-items: center; flex-wrap: wrap;
+      box-shadow: 0 10px 30px rgba(0,0,0,.35); font-size: .9rem;
+    }
+    body.modo-admin .admin-barra { display: flex; }
+    .admin-barra button {
+      border: none; border-radius: 999px; padding: 8px 16px;
+      cursor: pointer; font: inherit; font-weight: 600;
+    }
+    #admin-add  { background: var(--destaque); color: #fff; }
+    #admin-sair { background: rgba(255,255,255,.12); color: var(--creme); }
+
+    /* botões de editar/excluir sobre cada card (só no modo lojista) */
+    .admin-acoes { position: absolute; top: 10px; right: 10px; z-index: 6; display: none; gap: 8px; }
+    body.modo-admin .admin-acoes { display: flex; }
+    .admin-acoes button {
+      width: 40px; height: 40px; border-radius: 50%; border: none; cursor: pointer;
+      background: rgba(250,245,236,.95); font-size: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,.25);
+    }
+    body.modo-admin .produto[data-exemplo] .produto-img::after {
+      content: "Exemplo"; position: absolute; top: 10px; left: 10px; z-index: 6;
+      background: rgba(46,30,18,.75); color: var(--creme);
+      font-size: .72rem; font-weight: 600; padding: 4px 10px; border-radius: 999px;
+    }
+
+    .modal {
+      position: fixed; inset: 0; z-index: 2100;
+      background: rgba(24, 15, 8, .8);
+      display: none; align-items: center; justify-content: center; padding: 24px;
+    }
+    .modal.aberto { display: flex; }
+    .modal-caixa {
+      background: var(--branco); border-radius: var(--raio);
+      width: 100%; max-width: 460px; max-height: 90vh; overflow: auto;
+      padding: 28px; animation: aparecer .25s ease;
+    }
+    .modal-caixa-grande { max-width: 680px; }
+    .modal-caixa h3 { font-size: 1.4rem; color: var(--madeira-escura); margin-bottom: 18px; }
+    .modal-caixa label { display: block; font-size: .9rem; font-weight: 500; margin-bottom: 14px; }
+    .modal-caixa input[type="text"], .modal-caixa input[type="email"],
+    .modal-caixa input[type="password"], .modal-caixa select, .modal-caixa textarea {
+      width: 100%; margin-top: 6px; padding: 10px 12px;
+      border: 1.5px solid #d8c6ab; border-radius: 8px;
+      font: inherit; background: var(--creme); color: var(--texto);
+    }
+    .modal-caixa textarea { min-height: 80px; resize: vertical; }
+    .modal-acoes { display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px; flex-wrap: wrap; }
+    .form-erro { color: #b23b2e; font-size: .88rem; min-height: 1.2em; margin-top: 10px; }
+
+    .btn-secundario {
+      padding: 10px 18px; border-radius: 999px; border: 1.5px solid #d8c6ab;
+      background: none; color: var(--texto-suave); font: inherit; font-weight: 600; cursor: pointer;
+    }
+    .btn-secundario:hover { border-color: var(--destaque); color: var(--destaque); }
+    .btn-secundario:disabled { opacity: .5; cursor: default; }
+    .btn-perigo {
+      padding: 10px 18px; border-radius: 999px; border: none;
+      background: #b23b2e; color: #fff; font: inherit; font-weight: 600;
+      cursor: pointer; margin-right: auto;
+    }
+
+    /* miniaturas das fotos dentro do editor de produto */
+    .editor-fotos {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 12px; margin: 10px 0 4px;
+    }
+    .editor-foto { border: 1.5px solid #e5d8c2; border-radius: 10px; padding: 8px; }
+    .editor-foto img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 6px; }
+    .editor-foto input { margin-top: 6px; font-size: .8rem; padding: 6px 8px !important; }
+    .editor-foto-botoes { display: flex; gap: 4px; margin-top: 6px; }
+    .editor-foto-botoes button {
+      flex: 1; padding: 4px; font-size: .75rem; cursor: pointer;
+      border: 1px solid #d8c6ab; background: var(--creme); border-radius: 6px;
+    }
+    .editor-foto-botoes button:disabled { opacity: .4; cursor: default; }
+
+    /* animação de entrada das seções */
+    .revelar { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+    .revelar.visivel { opacity: 1; transform: none; }
+
+    /* ============================================================
+       RESPONSIVO (celular)
+       ============================================================ */
+    @media (max-width: 820px) {
+      .hamburguer { display: block; }
+
+      .menu {
+        position: fixed; top: 68px; left: 0; right: 0;
+        flex-direction: column; gap: 0;
+        background: rgba(46, 30, 18, .98);
+        padding: 10px 4vw 18px;
+        transform: translateY(-130%); transition: transform .3s ease;
+      }
+      .menu.aberto { transform: translateY(0); }
+      .menu a { padding: 14px 12px; border-radius: 8px; }
+
+      .sobre-grade { grid-template-columns: 1fr; }
+      .sobre-arte { max-width: 420px; margin-inline: auto; order: -1; }
+      .diferenciais { grid-template-columns: 1fr; }
+      .hero-numeros { gap: 26px; }
+      section { padding: 64px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Desenhos reutilizados pelas "fotos" extras do carrossel.
+       Pode apagar este bloco quando trocar os desenhos por fotos reais. -->
+  <svg style="display:none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="icone-detalhe" viewBox="0 0 200 140">
+      <path d="M15 25 q45 -14 90 0 t80 0"/>
+      <path d="M15 52 q45 -14 90 0 t80 0"/>
+      <ellipse cx="100" cy="84" rx="24" ry="9"/>
+      <path d="M15 84 h58 M126 84 h59"/>
+      <path d="M15 114 q45 14 90 0 t80 0"/>
+    </symbol>
+    <symbol id="icone-ambiente" viewBox="0 0 200 140">
+      <line x1="12" y1="120" x2="188" y2="120"/>
+      <rect x="28" y="78" width="62" height="42" rx="3"/>
+      <line x1="59" y1="78" x2="59" y2="120"/>
+      <rect x="118" y="22" width="52" height="40" rx="3"/>
+      <line x1="144" y1="22" x2="144" y2="62"/>
+      <line x1="118" y1="42" x2="170" y2="42"/>
+      <line x1="150" y1="120" x2="150" y2="98"/>
+      <path d="M150 106 q-12 -2 -15 -15 q12 2 15 15 M150 101 q12 -2 15 -15 q-12 2 -15 15"/>
+      <path d="M142 120 h16 l-2 10 h-12 z"/>
+    </symbol>
+    <symbol id="icone-medidas" viewBox="0 0 200 140">
+      <rect x="62" y="24" width="86" height="80" rx="3"/>
+      <line x1="105" y1="24" x2="105" y2="104"/>
+      <path d="M42 24 v80 M36 24 h12 M36 104 h12"/>
+      <path d="M62 122 h86 M62 116 v12 M148 116 v12"/>
+    </symbol>
+  </svg>
+
+  <!-- ==========================================================
+       NAVBAR — cada link leva à seção correspondente da página
+       ========================================================== -->
+  <header class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <a href="#inicio" class="logo" aria-label="Voltar ao início">
+        <!-- ícone de serrote estilizado -->
+        <svg viewBox="0 0 32 32" fill="none" stroke="#c89b6d" stroke-width="2" stroke-linecap="round">
+          <path d="M4 22 20 6l7 7-6 6h-4l-2 2h-4l-2 2z"/>
+          <path d="M13 19h2M17 15h2"/>
+        </svg>
+        Mercearia <em>Sybau</em>
+      </a>
+
+      <button class="hamburguer" id="botao-menu" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav>
+        <ul class="menu" id="menu">
+          <li><a href="#inicio"      class="menu-link ativo">Início</a></li>
+          <li><a href="#produtos"    class="menu-link">Produtos</a></li>
+          <li><a href="#sobre"       class="menu-link">Sobre</a></li>
+          <li><a href="#depoimentos" class="menu-link">Depoimentos</a></li>
+          <li><a href="#contato"     class="menu-link">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==========================================================
+       INÍCIO (HERO)
+       ========================================================== -->
+  <section class="hero" id="inicio">
+    <div class="container">
+      <div class="hero-inner">
+        <span class="rotulo">Marcenaria artesanal desde 1998</span>
+        <h1>Móveis sob medida com a alma da <em>madeira</em></h1>
+        <p>
+          Cada peça é desenhada e construída à mão para o seu espaço.
+          Conheça nosso mostruário e peça um orçamento sem compromisso.
+        </p>
+        <div class="hero-acoes">
+          <a href="#produtos" class="btn btn-primario">Ver o mostruário ↓</a>
+          <a href="#contato" class="btn btn-contorno">Pedir orçamento</a>
+        </div>
+
+        <div class="hero-numeros">
+          <div><strong>25+</strong><span>anos de ofício</span></div>
+          <div><strong>800+</strong><span>projetos entregues</span></div>
+          <div><strong>100%</strong><span>sob medida</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================
+       PRODUTOS — o foco do site
+       ────────────────────────────────────────────────────────────
+       Os cards abaixo são EXEMPLOS: aparecem apenas enquanto o
+       catálogo online estiver vazio ou não configurado.
+
+       O jeito recomendado de gerenciar os produtos é PELO PRÓPRIO
+       SITE: configure o Firebase seguindo o passo a passo do
+       arquivo CONFIGURAR-FIREBASE.md e depois use a "Área do
+       lojista" (link no rodapé) para adicionar, editar e excluir
+       produtos com até 5 fotos cada — sem tocar neste código.
+
+       (Modo manual, se preferir: cada <div class="foto"> é uma
+       imagem do carrossel — troque o <svg> interno por
+       <img src="fotos/nome.jpg" alt="..."> e use o atributo
+       data-legenda para a legenda.)
+       ========================================================== -->
+  <section id="produtos">
+    <div class="container">
+      <div class="secao-titulo revelar">
+        <span class="rotulo">Mostruário</span>
+        <h2>Nossos produtos</h2>
+        <p>Clique em qualquer peça para ver mais de perto. Use os filtros para navegar por ambiente.</p>
+      </div>
+
+      <!-- Filtros por categoria -->
+      <div class="filtros revelar" id="filtros">
+        <button data-filtro="todos" class="ativo">Todos</button>
+        <button data-filtro="cozinha">Cozinha</button>
+        <button data-filtro="quarto">Quarto</button>
+        <button data-filtro="sala">Sala</button>
+        <button data-filtro="escritorio">Escritório</button>
+      </div>
+
+      <div class="galeria" id="galeria">
+
+        <!-- ===== COZINHA ===== -->
+        <article class="produto revelar" data-categoria="cozinha">
+          <div class="produto-img" style="--a:#a06b38; --b:#6b431f">
+            <div class="foto" data-legenda="Vista frontal">
+            <svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9">
+              <rect x="20" y="15" width="70" height="38" rx="3"/><line x1="55" y1="15" x2="55" y2="53"/>
+              <rect x="110" y="15" width="70" height="38" rx="3"/><line x1="145" y1="15" x2="145" y2="53"/>
+              <rect x="20" y="82" width="160" height="43" rx="3"/>
+              <line x1="73" y1="82" x2="73" y2="125"/><line x1="127" y1="82" x2="127" y2="125"/>
+              <line x1="20" y1="75" x2="180" y2="75" stroke-width="6"/>
+              <circle cx="47" cy="103" r="2.5"/><circle cx="100" cy="103" r="2.5"/><circle cx="153" cy="103" r="2.5"/>
+            </svg>
+            </div>
+            <div class="foto" data-legenda="Detalhe do acabamento"><svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9"><use href="#icone-detalhe"/></svg></div>
+            <div class="foto" data-legenda="No ambiente"><svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9"><use href="#icone-ambiente"/></svg></div>
+            <div class="foto" data-legenda="Projeto sob medida"><svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9"><use href="#icone-medidas"/></svg></div>
+            <div class="lupa"><span>⤢</span></div>
+          </div>
+          <div class="produto-info">
+            <span class="categoria">Cozinha</span>
+            <h3>Cozinha planejada completa</h3>
+            <p>Armários superiores e inferiores em MDF amadeirado, com bancada e acabamento fosco.</p>
+          </div>
+        </article>
+
+        <article class="produto revelar" data-categoria="cozinha">
+          <div class="produto-img" style="--a:#8d5a2e; --b:#59371a">
+            <div class="foto" data-legenda="Vista frontal">
+            <svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9">
+              <rect x="45" y="30" width="110" height="30" rx="3"/>
+              <line x1="45" y1="68" x2="155" y2="68" stroke-width="6"/>
+              <line x1="60" y1="71" x2="60" y2="120"/><line x1="140" y1="71" x2="140" y2="120"/>
+              <circle cx="85" cy="105" r="10"/><line x1="85" y1="95" x2="85" y2="88"/>
+              <circle cx="120" cy="105" r="10"/><line x1="120" y1="95" x2="120" y2="88"/>
+            </svg>
+            </div>
+            <div class="foto" data-legenda="Detalhe do acabamento"><svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9"><use href="#icone-detalhe"/></svg></div>
+            <div class="foto" data-legenda="No ambiente"><svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9"><use href="#icone-ambiente"/></svg></div>
+            <div class="lupa"><span>⤢</span></div>
+          </div>
+          <div class="produto-info">
+            <span class="categoria">Cozinha</span>
+            <h3>Ilha com banquetas</h3>
+            <p>Ilha central em madeira maciça com banquetas torneadas, ideal para refeições rápidas.</p>
+          </div>
+        </article>
+
+        <article class="produto revelar" data-categoria="cozinha">
+          <div class="produto-img" style="--a:#b07c45; --b:#7a4e24">
+            <div class="foto" data-legenda="Vista frontal">
+            <svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9">
+              <rect x="55" y="18" width="90" height="104" rx="4"/>
+              <line x1="55" y1="52" x2="145" y2="52"/><line x1="55" y1="87" x2="145" y2="87"/>
+              <line x1="100" y1="18" x2="100" y2="122"/>
+              <circle cx="92" cy="35" r="2.5"/><circle cx="108" cy="35" r="2.5"/>
+              <circle cx="92" cy="70" r="2.5"/><circle cx="108" cy="70" r="2.5"/>
+              <circle cx="92" cy="105" r="2.5"/><circle cx="108" cy="105" r="2.5"/>
+            </svg>
+            </div>
+            <div class="foto" data-legenda="Detalhe do acabamento"><svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9"><use href="#icone-detalhe"/></svg></div>
+            <div class="foto" data-legenda="No ambiente"><svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9"><use href="#icone-ambiente"/></svg></div>
+            <div class="lupa"><span>⤢</span></div>
+          </div>
+          <div class="produto-info">
+            <span class="categoria">Cozinha</span>
+            <h3>Armário despenseiro</h3>
+            <p>Torre de armazenamento com prateleiras internas reguláveis e portas de abertura ampla.</p>
+          </div>
+        </article>
+
+        <!-- ===== QUARTO ===== -->
+        <article class="produto revelar" data-categoria="quarto">
+          <div class="produto-img" style="--a:#96632f; --b:#5e3a18">
+            <div class="foto" data-legenda="Vista frontal">
+            <svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9">
+              <rect x="40" y="15" width="120" height="110" rx="4"/>
+              <line x1="100" y1="15" x2="100" y2="125"/>
+              <line x1="92" y1="55" x2="92" y2="80"/><line x1="108" y1="55" x2="108" y2="80"/>
+            </svg>
+            </div>
+            <div class="foto" data-legenda="Detalhe do acabamento"><svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9"><use href="#icone-detalhe"/></svg></div>
+            <div class="foto" data-legenda="No ambiente"><svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9"><use href="#icone-ambiente"/></svg></div>
+            <div class="lupa"><span>⤢</span></div>
+          </div>
+          <div class="produto-info">
+            <span class="categoria">Quarto</span>
+            <h3>Guarda-roupa duas portas</h3>
+            <p>Portas de giro com puxadores em madeira torneada e divisórias internas personalizáveis.</p>
+          </div>
+        </article>
+
+        <article class="produto revelar" data-categoria="quarto">
+          <div class="produto-img" style="--a:#a5713c; --b:#6e451f">
+            <div class="foto" data-legenda="Vista frontal">
+            <svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9">
+              <path d="M35 40 v75 M35 40 q0 -18 20 -18 h90 q20 0 20 18 v75"/>
+              <rect x="35" y="80" width="130" height="22" rx="6"/>
+              <line x1="35" y1="115" x2="35" y2="122"/><line x1="165" y1="115" x2="165" y2="122"/>
+            </svg>
+            </div>
+            <div class="foto" data-legenda="Detalhe do acabamento"><svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9"><use href="#icone-detalhe"/></svg></div>
+            <div class="foto" data-legenda="No ambiente"><svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9"><use href="#icone-ambiente"/></svg></div>
+            <div class="lupa"><span>⤢</span></div>
+          </div>
+          <div class="produto-info">
+            <span class="categoria">Quarto</span>
+            <h3>Cama de casal em madeira maciça</h3>
+            <p>Cabeceira curvada em peça única, estrutura reforçada e verniz de proteção fosco.</p>
+          </div>
+        </article>
+
+        <article class="produto revelar" data-categoria="quarto">
+          <div class="produto-img" style="--a:#8a5a30; --b:#563617">
+            <div class="foto" data-legenda="Vista frontal">
+            <svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9">
+              <rect x="45" y="35" width="110" height="80" rx="4"/>
+              <line x1="45" y1="62" x2="155" y2="62"/><line x1="45" y1="89" x2="155" y2="89"/>
+              <line x1="90" y1="48" x2="110" y2="48"/><line x1="90" y1="75" x2="110" y2="75"/><line x1="90" y1="102" x2="110" y2="102"/>
+              <line x1="50" y1="115" x2="50" y2="122"/><line x1="150" y1="115" x2="150" y2="122"/>
+            </svg>
+            </div>
+            <div class="foto" data-legenda="Detalhe do acabamento"><svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9"><use href="#icone-detalhe"/></svg></div>
+            <div class="foto" data-legenda="No ambiente"><svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9"><use href="#icone-ambiente"/></svg></div>
+            <div class="lupa"><span>⤢</span></div>
+          </div>
+          <div class="produto-info">
+            <span class="categoria">Quarto</span>
+            <h3>Cômoda três gavetas</h3>
+            <p>Corrediças telescópicas de fechamento suave e tampo com borda arredondada.</p>
+          </div>
+        </article>
+
+        <!-- ===== SALA ===== -->
+        <article class="produto revelar" data-categoria="sala">
+          <div class="produto-img" style="--a:#b0803f; --b:#7c521f">
+            <div class="foto" data-legenda="Vista frontal">
+            <svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9">
+              <ellipse cx="100" cy="45" rx="75" ry="14"/>
+              <line x1="40" y1="52" x2="46" y2="118"/><line x1="160" y1="52" x2="154" y2="118"/>
+              <line x1="100" y1="59" x2="100" y2="118"/>
+              <line x1="70" y1="118" x2="130" y2="118"/>
+            </svg>
+            </div>
+            <div class="foto" data-legenda="Detalhe do acabamento"><svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9"><use href="#icone-detalhe"/></svg></div>
+            <div class="foto" data-legenda="No ambiente"><svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9"><use href="#icone-ambiente"/></svg></div>
+            <div class="lupa"><span>⤢</span></div>
+          </div>
+          <div class="produto-info">
+            <span class="categoria">Sala</span>
+            <h3>Mesa de jantar oval</h3>
+            <p>Tampo em madeira de demolição para 6 lugares, com base central esculpida.</p>
+          </div>
+        </article>
+
+        <article class="produto revelar" data-categoria="sala">
+          <div class="produto-img" style="--a:#9c6a34; --b:#644018">
+            <div class="foto" data-legenda="Vista frontal">
+            <svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9">
+              <rect x="55" y="18" width="90" height="55" rx="3"/>
+              <line x1="70" y1="80" x2="130" y2="80"/>
+              <rect x="30" y="92" width="140" height="30" rx="4"/>
+              <line x1="77" y1="92" x2="77" y2="122"/><line x1="123" y1="92" x2="123" y2="122"/>
+            </svg>
+            </div>
+            <div class="foto" data-legenda="Detalhe do acabamento"><svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9"><use href="#icone-detalhe"/></svg></div>
+            <div class="foto" data-legenda="No ambiente"><svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9"><use href="#icone-ambiente"/></svg></div>
+            <div class="lupa"><span>⤢</span></div>
+          </div>
+          <div class="produto-info">
+            <span class="categoria">Sala</span>
+            <h3>Rack com painel para TV</h3>
+            <p>Painel ripado com passagem de fios embutida e rack suspenso com nichos abertos.</p>
+          </div>
+        </article>
+
+        <article class="produto revelar" data-categoria="sala">
+          <div class="produto-img" style="--a:#8f5c2c; --b:#5a3814">
+            <div class="foto" data-legenda="Vista frontal">
+            <svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9">
+              <rect x="50" y="15" width="100" height="110" rx="3"/>
+              <line x1="50" y1="43" x2="150" y2="43"/><line x1="50" y1="70" x2="150" y2="70"/><line x1="50" y1="97" x2="150" y2="97"/>
+              <line x1="72" y1="24" x2="72" y2="43"/><line x1="95" y1="24" x2="95" y2="43"/><line x1="118" y1="24" x2="118" y2="43"/>
+              <line x1="85" y1="52" x2="85 " y2="70"/><line x1="112" y1="52" x2="112" y2="70"/>
+              <line x1="78" y1="79" x2="78" y2="97"/><line x1="102" y1="79" x2="102" y2="97"/><line x1="126" y1="79" x2="126" y2="97"/>
+            </svg>
+            </div>
+            <div class="foto" data-legenda="Detalhe do acabamento"><svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9"><use href="#icone-detalhe"/></svg></div>
+            <div class="foto" data-legenda="No ambiente"><svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9"><use href="#icone-ambiente"/></svg></div>
+            <div class="lupa"><span>⤢</span></div>
+          </div>
+          <div class="produto-info">
+            <span class="categoria">Sala</span>
+            <h3>Estante livreiro</h3>
+            <p>Prateleiras em madeira maciça com fundo aberto, perfeita para livros e plantas.</p>
+          </div>
+        </article>
+
+        <article class="produto revelar" data-categoria="sala">
+          <div class="produto-img" style="--a:#a87740; --b:#6f481e">
+            <div class="foto" data-legenda="Vista frontal">
+            <svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9">
+              <line x1="45" y1="15" x2="45" y2="125"/><line x1="60" y1="15" x2="60" y2="125"/>
+              <line x1="75" y1="15" x2="75" y2="125"/><line x1="90" y1="15" x2="90" y2="125"/>
+              <line x1="105" y1="15" x2="105" y2="125"/><line x1="120" y1="15" x2="120" y2="125"/>
+              <line x1="135" y1="15" x2="135" y2="125"/><line x1="150" y1="15" x2="150" y2="125"/>
+            </svg>
+            </div>
+            <div class="foto" data-legenda="Detalhe do acabamento"><svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9"><use href="#icone-detalhe"/></svg></div>
+            <div class="foto" data-legenda="No ambiente"><svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9"><use href="#icone-ambiente"/></svg></div>
+            <div class="lupa"><span>⤢</span></div>
+          </div>
+          <div class="produto-info">
+            <span class="categoria">Sala</span>
+            <h3>Painel ripado decorativo</h3>
+            <p>Ripas em freijó sobre fundo escuro — acabamento que valoriza qualquer parede.</p>
+          </div>
+        </article>
+
+        <!-- ===== ESCRITÓRIO ===== -->
+        <article class="produto revelar" data-categoria="escritorio">
+          <div class="produto-img" style="--a:#98652f; --b:#603c16">
+            <div class="foto" data-legenda="Vista frontal">
+            <svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9">
+              <rect x="82" y="28" width="52" height="34" rx="3"/>
+              <line x1="108" y1="62" x2="108" y2="72"/><line x1="96" y1="72" x2="120" y2="72"/>
+              <line x1="35" y1="80" x2="165" y2="80" stroke-width="5"/>
+              <line x1="45" y1="80" x2="45" y2="122"/><line x1="155" y1="80" x2="155" y2="122"/>
+              <rect x="120" y="88" width="35" height="34" rx="3"/>
+              <line x1="120" y1="105" x2="155" y2="105"/>
+            </svg>
+            </div>
+            <div class="foto" data-legenda="Detalhe do acabamento"><svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9"><use href="#icone-detalhe"/></svg></div>
+            <div class="foto" data-legenda="No ambiente"><svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9"><use href="#icone-ambiente"/></svg></div>
+            <div class="lupa"><span>⤢</span></div>
+          </div>
+          <div class="produto-info">
+            <span class="categoria">Escritório</span>
+            <h3>Escrivaninha home office</h3>
+            <p>Mesa com gaveteiro lateral, furo para cabos e tampo extensível em L opcional.</p>
+          </div>
+        </article>
+
+        <article class="produto revelar" data-categoria="escritorio">
+          <div class="produto-img" style="--a:#8b5a2b; --b:#523314">
+            <div class="foto" data-legenda="Vista frontal">
+            <svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9">
+              <rect x="40" y="20" width="55" height="105" rx="3"/>
+              <line x1="40" y1="55" x2="95" y2="55"/><line x1="40" y1="90" x2="95" y2="90"/>
+              <rect x="105" y="55" width="55" height="70" rx="3"/>
+              <line x1="105" y1="90" x2="160" y2="90"/>
+              <circle cx="87" cy="37" r="2.5"/><circle cx="87" cy="72" r="2.5"/><circle cx="152" cy="72" r="2.5"/>
+            </svg>
+            </div>
+            <div class="foto" data-legenda="Detalhe do acabamento"><svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9"><use href="#icone-detalhe"/></svg></div>
+            <div class="foto" data-legenda="No ambiente"><svg viewBox="0 0 200 140" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".9"><use href="#icone-ambiente"/></svg></div>
+            <div class="lupa"><span>⤢</span></div>
+          </div>
+          <div class="produto-info">
+            <span class="categoria">Escritório</span>
+            <h3>Armário para escritório</h3>
+            <p>Conjunto modular com arquivo para pastas suspensas e prateleiras para impressora.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================
+       SOBRE
+       ========================================================== -->
+  <section id="sobre">
+    <div class="container sobre-grade">
+      <div class="sobre-texto revelar">
+        <span class="rotulo" style="color:var(--destaque); font-size:.8rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase;">Nossa história</span>
+        <h2>Três gerações transformando madeira em memória</h2>
+        <p>
+          A Bom Madeiro nasceu em 1998 numa pequena oficina de fundo de quintal.
+          Hoje somos uma equipe de marceneiros apaixonados, mas o princípio continua
+          o mesmo: cada móvel é único, feito para durar gerações.
+        </p>
+        <p>
+          Trabalhamos com madeira de reflorestamento certificada e madeira de demolição
+          recuperada, unindo técnicas tradicionais de encaixe com acabamentos modernos.
+        </p>
+
+        <div class="diferenciais">
+          <div class="diferencial">
+            <div class="icone">📐</div>
+            <div><strong>Projeto sob medida</strong><span>Visita técnica e desenho 3D antes de cortar a primeira peça.</span></div>
+          </div>
+          <div class="diferencial">
+            <div class="icone">🌳</div>
+            <div><strong>Madeira certificada</strong><span>Reflorestamento e demolição — beleza com responsabilidade.</span></div>
+          </div>
+          <div class="diferencial">
+            <div class="icone">🛠️</div>
+            <div><strong>Garantia de 5 anos</strong><span>Assistência completa em estrutura e acabamento.</span></div>
+          </div>
+          <div class="diferencial">
+            <div class="icone">🚚</div>
+            <div><strong>Entrega e montagem</strong><span>Instalação feita pela nossa própria equipe.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sobre-arte revelar" aria-hidden="true">
+        <!-- ilustração: bancada de marceneiro -->
+        <svg viewBox="0 0 200 240" fill="none" stroke="#f5e9d6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity=".85">
+          <line x1="20" y1="120" x2="180" y2="120" stroke-width="6"/>
+          <line x1="35" y1="126" x2="35" y2="210"/><line x1="165" y1="126" x2="165" y2="210"/>
+          <line x1="35" y1="170" x2="165" y2="170"/>
+          <path d="M60 120 v-22 h34 l14 10 v12"/>
+          <circle cx="77" cy="108" r="3"/>
+          <path d="M130 120 l18 -34 6 4 -14 30"/>
+          <path d="M40 60 q30 -18 60 0 t60 0" opacity=".5"/>
+          <path d="M50 40 q25 -14 50 0 t50 0" opacity=".3"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================
+       DEPOIMENTOS
+       ========================================================== -->
+  <section id="depoimentos">
+    <div class="container">
+      <div class="secao-titulo revelar">
+        <span class="rotulo">Depoimentos</span>
+        <h2>Quem já levou a madeira pra casa</h2>
+      </div>
+
+      <div class="depoimentos-grade">
+        <div class="depoimento revelar">
+          <div class="estrelas" aria-label="5 de 5 estrelas">★★★★★</div>
+          <blockquote>“A cozinha ficou exatamente como sonhamos. Do projeto 3D à montagem, tudo no prazo e com um capricho impressionante.”</blockquote>
+          <footer>
+            <div class="avatar">MC</div>
+            <div><strong>Mariana C.</strong><span>Cozinha planejada</span></div>
+          </footer>
+        </div>
+
+        <div class="depoimento revelar">
+          <div class="estrelas" aria-label="5 de 5 estrelas">★★★★★</div>
+          <blockquote>“Encomendei a mesa de jantar em madeira de demolição. Virou o centro da casa — todo mundo pergunta onde foi feita.”</blockquote>
+          <footer>
+            <div class="avatar">RS</div>
+            <div><strong>Ricardo S.</strong><span>Mesa de jantar oval</span></div>
+          </footer>
+        </div>
+
+        <div class="depoimento revelar">
+          <div class="estrelas" aria-label="5 de 5 estrelas">★★★★★</div>
+          <blockquote>“O guarda-roupa aproveitou cada centímetro do quarto. Atendimento atencioso e acabamento de primeira.”</blockquote>
+          <footer>
+            <div class="avatar">JA</div>
+            <div><strong>Juliana A.</strong><span>Guarda-roupa sob medida</span></div>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================
+       CONTATO
+       ========================================================== -->
+  <section id="contato">
+    <div class="container">
+      <div class="secao-titulo revelar">
+        <span class="rotulo">Contato</span>
+        <h2>Vamos tirar seu projeto do papel?</h2>
+        <p>Chame no WhatsApp ou visite nossa oficina — o café está sempre passado.</p>
+      </div>
+
+      <!-- TROQUE os telefones, endereço e @ pelos dados reais da loja -->
+      <div class="contato-grade revelar">
+        <a class="contato-cartao" href="https://wa.me/5500000000000" target="_blank" rel="noopener">
+          <div class="icone">💬</div>
+          <strong>WhatsApp</strong>
+          <span>(00) 00000-0000</span>
+        </a>
+        <a class="contato-cartao" href="tel:+5500000000000">
+          <div class="icone">📞</div>
+          <strong>Telefone</strong>
+          <span>(00) 0000-0000</span>
+        </a>
+        <div class="contato-cartao">
+          <div class="icone">📍</div>
+          <strong>Oficina</strong>
+          <span>Rua dos Marceneiros, 123 — Centro<br>Seg. a sex., 8h às 18h · Sáb., 8h às 12h</span>
+        </div>
+        <a class="contato-cartao" href="https://instagram.com/" target="_blank" rel="noopener">
+          <div class="icone">📷</div>
+          <strong>Instagram</strong>
+          <span>@bommadeiro</span>
+        </a>
+      </div>
+
+      <div class="contato-cta revelar">
+        <a class="btn btn-primario" href="https://wa.me/5500000000000?text=Ol%C3%A1!%20Vi%20o%20mostru%C3%A1rio%20no%20site%20e%20quero%20um%20or%C3%A7amento." target="_blank" rel="noopener">
+          Pedir orçamento pelo WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================
+       RODAPÉ
+       ========================================================== -->
+  <footer class="rodape">
+    <div class="container">
+      <span>© <span id="ano"></span> Marcenaria Bom Madeiro — Todos os direitos reservados.</span>
+      <span>Feito com 🪵 e capricho · <a href="#inicio">Voltar ao topo ↑</a> · <a href="#admin">Área do lojista</a></span>
+    </div>
+  </footer>
+
+  <!-- Botão flutuante do WhatsApp -->
+  <a class="whats-flutuante" href="https://wa.me/5500000000000" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.2 14.2c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.7-4.4-3.9-.1-.2-1.1-1.4-1.1-2.7s.7-1.9.9-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.4.2.5.7 1.8.8 1.9.1.1.1.3 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.1.3.7 1.1 1.4 1.8 1 .9 1.8 1.1 2.1 1.3.3.1.4.1.6-.1l.9-1c.2-.3.4-.2.7-.1l1.7.8c.3.1.5.2.5.3.1.1.1.7-.3 1.2Z"/>
+    </svg>
+  </a>
+
+  <!-- ==========================================================
+       LIGHTBOX — janela que abre ao clicar num produto
+       ========================================================== -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Detalhe do produto">
+    <div class="lightbox-caixa" style="position:relative">
+      <button class="lightbox-fechar" id="lightbox-fechar" aria-label="Fechar">✕</button>
+      <div class="lightbox-img" id="lightbox-img">
+        <div class="carrossel-trilho" id="carrossel-trilho"></div>
+        <button class="carrossel-seta anterior" id="seta-anterior" aria-label="Foto anterior">‹</button>
+        <button class="carrossel-seta proxima" id="seta-proxima" aria-label="Próxima foto">›</button>
+        <div class="carrossel-contador" id="carrossel-contador"></div>
+        <div class="carrossel-legenda" id="carrossel-legenda"></div>
+        <div class="carrossel-pontos" id="carrossel-pontos"></div>
+      </div>
+      <div class="lightbox-texto">
+        <span class="categoria" id="lightbox-categoria"></span>
+        <h3 id="lightbox-titulo"></h3>
+        <p id="lightbox-descricao"></p>
+        <a class="btn btn-primario" id="lightbox-whats" href="#" target="_blank" rel="noopener">
+          Pedir orçamento desta peça
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       ÁREA DO LOJISTA — barra de administração e janelas (modais)
+       ========================================================== -->
+  <div class="admin-barra" id="admin-barra" hidden>
+    <span>🔧 Modo lojista</span>
+    <button type="button" id="admin-add">+ Adicionar produto</button>
+    <button type="button" id="admin-sair">Sair</button>
+  </div>
+
+  <!-- aparece se a Área do Lojista for aberta sem o Firebase configurado -->
+  <div class="modal" id="modal-instrucoes" role="dialog" aria-modal="true" aria-label="Como configurar">
+    <div class="modal-caixa">
+      <h3>Catálogo online ainda não configurado</h3>
+      <p style="color:var(--texto-suave); margin-bottom:12px">
+        Para adicionar e editar produtos pelo próprio site, é preciso conectá-lo
+        a um banco de dados gratuito (Firebase). É uma configuração única, de uns 20 minutos.
+      </p>
+      <p style="color:var(--texto-suave)">
+        Siga o passo a passo do arquivo <strong>CONFIGURAR-FIREBASE.md</strong>,
+        que está na mesma pasta deste site.
+      </p>
+      <div class="modal-acoes">
+        <button type="button" class="btn btn-primario" data-fechar>Entendi</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- login do lojista -->
+  <div class="modal" id="modal-login" role="dialog" aria-modal="true" aria-label="Entrar na área do lojista">
+    <form class="modal-caixa" id="form-login">
+      <h3>Área do lojista</h3>
+      <label>E-mail <input type="email" id="login-email" required autocomplete="username"></label>
+      <label>Senha <input type="password" id="login-senha" required autocomplete="current-password"></label>
+      <p class="form-erro" id="login-erro"></p>
+      <div class="modal-acoes">
+        <button type="button" class="btn-secundario" data-fechar>Cancelar</button>
+        <button type="submit" class="btn btn-primario">Entrar</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- editor de produto (criar / editar / excluir) -->
+  <div class="modal" id="modal-editor" role="dialog" aria-modal="true" aria-label="Editar produto">
+    <form class="modal-caixa modal-caixa-grande" id="form-produto">
+      <h3 id="editor-titulo">Novo produto</h3>
+      <label>Nome do produto <input type="text" id="campo-nome" required maxlength="60"></label>
+      <label>Categoria
+        <select id="campo-categoria">
+          <option value="cozinha">Cozinha</option>
+          <option value="quarto">Quarto</option>
+          <option value="sala">Sala</option>
+          <option value="escritorio">Escritório</option>
+        </select>
+      </label>
+      <label>Descrição <textarea id="campo-descricao" required maxlength="220"></textarea></label>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap">
+        <strong style="font-size:.9rem">Fotos <span id="contador-fotos" style="color:var(--texto-suave); font-weight:400"></span></strong>
+        <button type="button" class="btn-secundario" id="btn-add-foto">+ Adicionar foto</button>
+      </div>
+      <div class="editor-fotos" id="editor-fotos"></div>
+      <input type="file" id="input-arquivo" accept="image/*" multiple hidden>
+
+      <p class="form-erro" id="editor-erro"></p>
+      <div class="modal-acoes">
+        <button type="button" class="btn-perigo" id="btn-excluir" hidden>Excluir produto</button>
+        <button type="button" class="btn-secundario" data-fechar>Cancelar</button>
+        <button type="submit" class="btn btn-primario">Salvar</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    /* ============================================================
+       ★★★ CONFIGURAÇÃO DO CATÁLOGO ONLINE (Firebase) ★★★
+       Siga o passo a passo do arquivo CONFIGURAR-FIREBASE.md e
+       substitua o bloco abaixo pelos dados do SEU projeto.
+       Enquanto isso não for feito, o site mostra os produtos de
+       exemplo escritos mais acima neste arquivo.
+       ============================================================ */
+    const FIREBASE_CONFIG = {
+      apiKey:            "AIzaSyBqdFlLOIuAMPgLb7UlZFwdckF59Uvx1r4",
+      authDomain:        "mostruario-marcenaria.firebaseapp.com",
+      projectId:         "mostruario-marcenaria",
+      storageBucket:     "mostruario-marcenaria.firebasestorage.app",
+      messagingSenderId: "503198571171",
+      appId:             "1:503198571171:web:b21c566e721f500496bd16"
+    };
+
+    /* ============================================================
+       1. MENU MOBILE (hambúrguer)
+       ============================================================ */
+    const botaoMenu = document.getElementById('botao-menu');
+    const menu = document.getElementById('menu');
+
+    botaoMenu.addEventListener('click', () => {
+      const aberto = menu.classList.toggle('aberto');
+      botaoMenu.classList.toggle('aberto', aberto);
+      botaoMenu.setAttribute('aria-expanded', aberto);
+    });
+
+    // fecha o menu ao clicar em qualquer link
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('aberto');
+        botaoMenu.classList.remove('aberto');
+        botaoMenu.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    /* ============================================================
+       2. NAVBAR — sombra ao rolar + link ativo conforme a seção
+       ============================================================ */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('rolou', window.scrollY > 10);
+    });
+
+    const linksMenu = document.querySelectorAll('.menu-link');
+    const secoes = [...linksMenu].map(l => document.querySelector(l.getAttribute('href')));
+
+    const observadorSecoes = new IntersectionObserver(entradas => {
+      entradas.forEach(entrada => {
+        if (entrada.isIntersecting) {
+          linksMenu.forEach(l => l.classList.toggle(
+            'ativo', l.getAttribute('href') === '#' + entrada.target.id
+          ));
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+
+    secoes.forEach(s => s && observadorSecoes.observe(s));
+
+    /* ============================================================
+       3. FILTRO DE PRODUTOS POR CATEGORIA
+       (consulta os .produto na hora, pois o catálogo online
+       pode adicionar e remover cards depois do carregamento)
+       ============================================================ */
+    const galeria = document.getElementById('galeria');
+    const botoesFiltro = document.querySelectorAll('#filtros button');
+    let filtroAtual = 'todos';
+
+    function aplicarFiltro() {
+      document.querySelectorAll('.produto').forEach(produto => {
+        const mostrar = filtroAtual === 'todos' || produto.dataset.categoria === filtroAtual;
+        produto.classList.toggle('escondido', !mostrar);
+      });
+    }
+
+    botoesFiltro.forEach(botao => {
+      botao.addEventListener('click', () => {
+        botoesFiltro.forEach(b => b.classList.remove('ativo'));
+        botao.classList.add('ativo');
+        filtroAtual = botao.dataset.filtro;
+        aplicarFiltro();
+      });
+    });
+
+    /* ============================================================
+       4. LIGHTBOX + CARROSSEL — abre o produto ampliado com todas
+          as fotos do card (setas, pontos, teclado e arrastar)
+       ============================================================ */
+    const lightbox = document.getElementById('lightbox');
+    const areaCarrossel = document.getElementById('lightbox-img');
+    const trilho = document.getElementById('carrossel-trilho');
+    const pontos = document.getElementById('carrossel-pontos');
+    const contador = document.getElementById('carrossel-contador');
+    const legendaFoto = document.getElementById('carrossel-legenda');
+    const setaAnterior = document.getElementById('seta-anterior');
+    const setaProxima = document.getElementById('seta-proxima');
+    const lightboxTitulo = document.getElementById('lightbox-titulo');
+    const lightboxCategoria = document.getElementById('lightbox-categoria');
+    const lightboxDescricao = document.getElementById('lightbox-descricao');
+    const lightboxWhats = document.getElementById('lightbox-whats');
+    const lightboxFechar = document.getElementById('lightbox-fechar');
+
+    let totalSlides = 0;
+    let slideAtual = 0;
+    let legendas = [];
+
+    function irParaSlide(indice) {
+      slideAtual = (indice + totalSlides) % totalSlides; // dá a volta nas pontas
+      trilho.style.transform = 'translateX(-' + slideAtual * 100 + '%)';
+      contador.textContent = (slideAtual + 1) + ' / ' + totalSlides;
+      legendaFoto.textContent = legendas[slideAtual] || '';
+      legendaFoto.style.display = legendas[slideAtual] ? '' : 'none';
+      [...pontos.children].forEach((p, i) => p.classList.toggle('ativo', i === slideAtual));
+    }
+
+    setaAnterior.addEventListener('click', () => irParaSlide(slideAtual - 1));
+    setaProxima.addEventListener('click', () => irParaSlide(slideAtual + 1));
+
+    // deslizar com o dedo (celular) ou arrastar com o mouse
+    let arrastoInicioX = null;
+    areaCarrossel.addEventListener('pointerdown', e => { arrastoInicioX = e.clientX; });
+    areaCarrossel.addEventListener('pointerup', e => {
+      if (arrastoInicioX === null) return;
+      const distancia = e.clientX - arrastoInicioX;
+      if (Math.abs(distancia) > 40) irParaSlide(slideAtual + (distancia < 0 ? 1 : -1));
+      arrastoInicioX = null;
+    });
+
+    function abrirLightbox(produto) {
+      const imagem = produto.querySelector('.produto-img');
+      const fotos = imagem.querySelectorAll('.foto');
+      const titulo = produto.querySelector('h3').textContent;
+
+      // monta os slides e os pontos a partir das fotos do card
+      trilho.innerHTML = '';
+      pontos.innerHTML = '';
+      legendas = [];
+      fotos.forEach(foto => {
+        const midia = foto.querySelector('img, svg');
+        if (!midia) return; // ignora foto vazia
+
+        const slide = document.createElement('div');
+        slide.className = 'carrossel-slide';
+        slide.appendChild(midia.cloneNode(true));
+        trilho.appendChild(slide);
+        legendas.push(foto.dataset.legenda || '');
+
+        const indice = trilho.children.length - 1;
+        const ponto = document.createElement('button');
+        ponto.setAttribute('aria-label', 'Ir para a foto ' + (indice + 1));
+        ponto.addEventListener('click', () => irParaSlide(indice));
+        pontos.appendChild(ponto);
+      });
+      totalSlides = trilho.children.length;
+
+      // produto com uma foto só não precisa de setas, pontos nem contador
+      const temVarias = totalSlides > 1;
+      setaAnterior.style.display = temVarias ? '' : 'none';
+      setaProxima.style.display = temVarias ? '' : 'none';
+      pontos.style.display = temVarias ? '' : 'none';
+      contador.style.display = temVarias ? '' : 'none';
+      legendaFoto.style.display = 'none';
+
+      // usa o mesmo fundo amadeirado do card
+      areaCarrossel.style.setProperty('--a', imagem.style.getPropertyValue('--a'));
+      areaCarrossel.style.setProperty('--b', imagem.style.getPropertyValue('--b'));
+
+      lightboxTitulo.textContent = titulo;
+      lightboxCategoria.textContent = produto.querySelector('.categoria').textContent;
+      lightboxDescricao.textContent = produto.querySelector('.produto-info p').textContent;
+      lightboxWhats.href = 'https://wa.me/5500000000000?text=' +
+        encodeURIComponent('Olá! Tenho interesse na peça "' + titulo + '" que vi no mostruário do site.');
+
+      if (totalSlides) {
+        // abre sempre na primeira foto, sem animar a troca de produto
+        trilho.style.transition = 'none';
+        irParaSlide(0);
+        trilho.offsetHeight; // aplica a posição antes de reativar a animação
+        trilho.style.transition = '';
+      }
+
+      lightbox.classList.add('aberto');
+      document.body.style.overflow = 'hidden'; // trava o scroll da página
+    }
+
+    // delegação de cliques: funciona também para os produtos criados
+    // pelo catálogo online e trata os botões do modo lojista
+    galeria.addEventListener('click', e => {
+      const produto = e.target.closest('.produto');
+      if (!produto) return;
+
+      const botaoAdmin = e.target.closest('[data-acao]');
+      if (botaoAdmin) {
+        if (botaoAdmin.dataset.acao === 'editar') abrirEditor(produto.dataset.id);
+        if (botaoAdmin.dataset.acao === 'excluir') excluirProduto(produto.dataset.id);
+        return;
+      }
+      abrirLightbox(produto);
+    });
+
+    function fecharLightbox() {
+      lightbox.classList.remove('aberto');
+      document.body.style.overflow = '';
+    }
+    lightboxFechar.addEventListener('click', fecharLightbox);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) fecharLightbox(); });
+
+    // teclado: Esc fecha, setas esquerda/direita trocam a foto
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('aberto')) return;
+      if (e.key === 'Escape') fecharLightbox();
+      if (e.key === 'ArrowLeft') irParaSlide(slideAtual - 1);
+      if (e.key === 'ArrowRight') irParaSlide(slideAtual + 1);
+    });
+
+    /* ============================================================
+       5. ANIMAÇÃO DE ENTRADA (elementos aparecem ao rolar)
+       ============================================================ */
+    const observadorRevelar = new IntersectionObserver(entradas => {
+      entradas.forEach(entrada => {
+        if (entrada.isIntersecting) {
+          entrada.target.classList.add('visivel');
+          observadorRevelar.unobserve(entrada.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.revelar').forEach(el => observadorRevelar.observe(el));
+
+    /* ============================================================
+       6. ANO AUTOMÁTICO NO RODAPÉ
+       ============================================================ */
+    document.getElementById('ano').textContent = new Date().getFullYear();
+
+    /* ============================================================
+       7. CATÁLOGO ONLINE (Firebase) — os produtos passam a vir do
+          banco de dados; os cards escritos no HTML viram exemplos
+          mostrados apenas enquanto o catálogo estiver vazio.
+       ============================================================ */
+    const FIREBASE_CDN = 'https://www.gstatic.com/firebasejs/10.12.2/';
+    const firebaseConfigurado = !JSON.stringify(FIREBASE_CONFIG).includes('COLE_AQUI');
+    const fb = {};            // guarda os módulos e conexões do Firebase
+    let produtosOnline = [];  // produtos vindos do banco
+
+    // marca os produtos do HTML como exemplos e guarda uma cópia deles
+    document.querySelectorAll('#galeria .produto').forEach(p => p.setAttribute('data-exemplo', ''));
+    const htmlExemplos = galeria.innerHTML;
+
+    const NOMES_CATEGORIAS = { cozinha: 'Cozinha', quarto: 'Quarto', sala: 'Sala', escritorio: 'Escritório' };
+
+    // evita que textos digitados quebrem o HTML da página
+    function escaparHtml(texto) {
+      const div = document.createElement('div');
+      div.textContent = texto ?? '';
+      return div.innerHTML;
+    }
+    function escaparAtributo(texto) { return escaparHtml(texto).replace(/"/g, '&quot;'); }
+
+    function montarCardProduto(produto) {
+      const artigo = document.createElement('article');
+      artigo.className = 'produto revelar visivel';
+      artigo.dataset.categoria = produto.categoria;
+      artigo.dataset.id = produto.id;
+
+      const fotosHtml = (produto.fotos || []).map(f =>
+        '<div class="foto"' + (f.legenda ? ' data-legenda="' + escaparAtributo(f.legenda) + '"' : '') + '>' +
+          '<img src="' + f.src + '" alt="' + escaparAtributo(produto.nome) + '">' +
+        '</div>'
+      ).join('');
+
+      artigo.innerHTML =
+        '<div class="produto-img">' + fotosHtml +
+          '<div class="lupa"><span>⤢</span></div>' +
+          '<div class="admin-acoes">' +
+            '<button type="button" data-acao="editar" aria-label="Editar produto">✏️</button>' +
+            '<button type="button" data-acao="excluir" aria-label="Excluir produto">🗑️</button>' +
+          '</div>' +
+        '</div>' +
+        '<div class="produto-info">' +
+          '<span class="categoria">' + (NOMES_CATEGORIAS[produto.categoria] || escaparHtml(produto.categoria)) + '</span>' +
+          '<h3>' + escaparHtml(produto.nome) + '</h3>' +
+          '<p>' + escaparHtml(produto.descricao || '') + '</p>' +
+        '</div>';
+      return artigo;
+    }
+
+    function renderizarCatalogo() {
+      if (produtosOnline.length) {
+        galeria.innerHTML = '';
+        produtosOnline.forEach(p => galeria.appendChild(montarCardProduto(p)));
+      } else {
+        // sem produtos cadastrados: volta a mostrar os exemplos
+        galeria.innerHTML = htmlExemplos;
+        galeria.querySelectorAll('.revelar').forEach(el => el.classList.add('visivel'));
+      }
+      aplicarFiltro();
+    }
+
+    async function iniciarFirebase() {
+      if (fb.db) return;
+      const [moduloApp, moduloBanco] = await Promise.all([
+        import(FIREBASE_CDN + 'firebase-app.js'),
+        import(FIREBASE_CDN + 'firebase-firestore.js')
+      ]);
+      fb.app = moduloApp.initializeApp(FIREBASE_CONFIG);
+      fb.db = moduloBanco.getFirestore(fb.app);
+      Object.assign(fb, {
+        collection: moduloBanco.collection, getDocs: moduloBanco.getDocs,
+        query: moduloBanco.query, orderBy: moduloBanco.orderBy,
+        addDoc: moduloBanco.addDoc, doc: moduloBanco.doc,
+        updateDoc: moduloBanco.updateDoc, deleteDoc: moduloBanco.deleteDoc
+      });
+    }
+
+    async function carregarCatalogo() {
+      const consulta = fb.query(fb.collection(fb.db, 'produtos'), fb.orderBy('criadoEm', 'asc'));
+      const resultado = await fb.getDocs(consulta);
+      produtosOnline = [];
+      resultado.forEach(docum => produtosOnline.push({ id: docum.id, ...docum.data() }));
+      renderizarCatalogo();
+    }
+
+    if (firebaseConfigurado) {
+      iniciarFirebase().then(carregarCatalogo)
+        .catch(erro => console.warn('Catálogo online indisponível; mostrando os exemplos.', erro));
+    }
+
+    /* ============================================================
+       8. ÁREA DO LOJISTA — login e edição dos produtos pelo site
+       ============================================================ */
+    const barraAdmin = document.getElementById('admin-barra');
+    const modalInstrucoes = document.getElementById('modal-instrucoes');
+    const modalLogin = document.getElementById('modal-login');
+    const modalEditor = document.getElementById('modal-editor');
+    const formLogin = document.getElementById('form-login');
+    const loginErro = document.getElementById('login-erro');
+
+    function abrirModal(modal) { modal.classList.add('aberto'); document.body.style.overflow = 'hidden'; }
+    function fecharModal(modal) { modal.classList.remove('aberto'); document.body.style.overflow = ''; }
+
+    document.querySelectorAll('.modal').forEach(modal => {
+      modal.addEventListener('click', e => { if (e.target === modal) fecharModal(modal); });
+      modal.querySelectorAll('[data-fechar]').forEach(b => b.addEventListener('click', () => fecharModal(modal)));
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') document.querySelectorAll('.modal.aberto').forEach(fecharModal);
+    });
+
+    async function iniciarAuth() {
+      if (fb.auth) return;
+      const moduloAuth = await import(FIREBASE_CDN + 'firebase-auth.js');
+      fb.auth = moduloAuth.getAuth(fb.app);
+      fb.signIn = moduloAuth.signInWithEmailAndPassword;
+      fb.signOut = moduloAuth.signOut;
+      moduloAuth.onAuthStateChanged(fb.auth, usuario => definirModoAdmin(!!usuario));
+    }
+
+    function definirModoAdmin(ligado) {
+      document.body.classList.toggle('modo-admin', ligado);
+      barraAdmin.hidden = !ligado;
+      if (ligado) fecharModal(modalLogin);
+    }
+
+    async function tratarHashAdmin() {
+      if (location.hash !== '#admin') return;
+      if (!firebaseConfigurado) { abrirModal(modalInstrucoes); return; }
+      try {
+        await iniciarFirebase();
+        await iniciarAuth();
+        if (!fb.auth.currentUser) abrirModal(modalLogin);
+      } catch (erro) {
+        alert('Não consegui conectar ao Firebase: ' + (erro.message || erro));
+      }
+    }
+    window.addEventListener('hashchange', tratarHashAdmin);
+    tratarHashAdmin();
+
+    formLogin.addEventListener('submit', async e => {
+      e.preventDefault();
+      loginErro.textContent = '';
+      try {
+        await fb.signIn(fb.auth,
+          document.getElementById('login-email').value.trim(),
+          document.getElementById('login-senha').value);
+      } catch (erro) {
+        loginErro.textContent = 'E-mail ou senha incorretos.';
+      }
+    });
+
+    document.getElementById('admin-sair').addEventListener('click', async () => {
+      try { if (fb.signOut && fb.auth) await fb.signOut(fb.auth); }
+      finally {
+        definirModoAdmin(false); // esconde a barra de qualquer jeito
+        history.replaceState(null, '', location.pathname); // tira o #admin do endereço
+      }
+    });
+    document.getElementById('admin-add').addEventListener('click', () => abrirEditor(null));
+
+    /* ---------- editor de produto ---------- */
+    const formProduto = document.getElementById('form-produto');
+    const campoNome = document.getElementById('campo-nome');
+    const campoCategoria = document.getElementById('campo-categoria');
+    const campoDescricao = document.getElementById('campo-descricao');
+    const listaFotosEditor = document.getElementById('editor-fotos');
+    const contadorFotos = document.getElementById('contador-fotos');
+    const btnAddFoto = document.getElementById('btn-add-foto');
+    const inputArquivo = document.getElementById('input-arquivo');
+    const editorErro = document.getElementById('editor-erro');
+    const btnExcluir = document.getElementById('btn-excluir');
+    const MAX_FOTOS = 5;
+
+    let editandoId = null;
+    let fotosEditor = []; // [{src, legenda}]
+
+    function abrirEditor(id) {
+      const dados = id ? produtosOnline.find(p => p.id === id) : null;
+      editandoId = dados ? id : null;
+      document.getElementById('editor-titulo').textContent = dados ? 'Editar produto' : 'Novo produto';
+      campoNome.value = dados ? dados.nome : '';
+      campoCategoria.value = dados ? dados.categoria : 'cozinha';
+      campoDescricao.value = dados ? (dados.descricao || '') : '';
+      fotosEditor = dados ? (dados.fotos || []).map(f => ({ ...f })) : [];
+      btnExcluir.hidden = !dados;
+      editorErro.textContent = '';
+      renderizarFotosEditor();
+      abrirModal(modalEditor);
+    }
+
+    function renderizarFotosEditor() {
+      listaFotosEditor.innerHTML = '';
+      fotosEditor.forEach((foto, i) => {
+        const item = document.createElement('div');
+        item.className = 'editor-foto';
+        item.innerHTML =
+          '<img src="' + foto.src + '" alt="Foto ' + (i + 1) + '">' +
+          '<input type="text" maxlength="60" placeholder="Legenda (opcional)" value="' + escaparAtributo(foto.legenda || '') + '">' +
+          '<div class="editor-foto-botoes">' +
+            '<button type="button" data-mover="-1"' + (i === 0 ? ' disabled' : '') + ' aria-label="Mover para a esquerda">◀</button>' +
+            '<button type="button" data-mover="1"' + (i === fotosEditor.length - 1 ? ' disabled' : '') + ' aria-label="Mover para a direita">▶</button>' +
+            '<button type="button" data-remover aria-label="Remover foto">✕</button>' +
+          '</div>';
+        item.querySelector('input').addEventListener('input', ev => { fotosEditor[i].legenda = ev.target.value; });
+        item.querySelectorAll('[data-mover]').forEach(botao => botao.addEventListener('click', () => {
+          const j = i + Number(botao.dataset.mover);
+          [fotosEditor[i], fotosEditor[j]] = [fotosEditor[j], fotosEditor[i]];
+          renderizarFotosEditor();
+        }));
+        item.querySelector('[data-remover]').addEventListener('click', () => {
+          fotosEditor.splice(i, 1);
+          renderizarFotosEditor();
+        });
+        listaFotosEditor.appendChild(item);
+      });
+      contadorFotos.textContent = '(' + fotosEditor.length + ' de ' + MAX_FOTOS + ')';
+      btnAddFoto.disabled = fotosEditor.length >= MAX_FOTOS;
+    }
+
+    // reduz e comprime a foto no navegador para caber no plano gratuito
+    function comprimirFoto(arquivo) {
+      return new Promise((resolver, rejeitar) => {
+        const img = new Image();
+        img.onload = () => {
+          const escala = Math.min(1, 1200 / Math.max(img.width, img.height));
+          const tela = document.createElement('canvas');
+          tela.width = Math.round(img.width * escala);
+          tela.height = Math.round(img.height * escala);
+          const ctx = tela.getContext('2d');
+          ctx.fillStyle = '#fff'; // fundo branco para PNGs transparentes
+          ctx.fillRect(0, 0, tela.width, tela.height);
+          ctx.drawImage(img, 0, 0, tela.width, tela.height);
+          let qualidade = 0.85;
+          let resultado = tela.toDataURL('image/jpeg', qualidade);
+          while (resultado.length > 170 * 1024 && qualidade > 0.4) {
+            qualidade -= 0.1;
+            resultado = tela.toDataURL('image/jpeg', qualidade);
+          }
+          URL.revokeObjectURL(img.src);
+          resolver(resultado);
+        };
+        img.onerror = () => rejeitar(new Error('imagem inválida'));
+        img.src = URL.createObjectURL(arquivo);
+      });
+    }
+
+    btnAddFoto.addEventListener('click', () => inputArquivo.click());
+    inputArquivo.addEventListener('change', async () => {
+      const arquivos = [...inputArquivo.files].slice(0, MAX_FOTOS - fotosEditor.length);
+      inputArquivo.value = '';
+      btnAddFoto.disabled = true;
+      btnAddFoto.textContent = 'Processando…';
+      for (const arquivo of arquivos) {
+        try { fotosEditor.push({ src: await comprimirFoto(arquivo), legenda: '' }); }
+        catch { editorErro.textContent = 'Não consegui ler uma das imagens.'; }
+      }
+      btnAddFoto.textContent = '+ Adicionar foto';
+      renderizarFotosEditor();
+    });
+
+    formProduto.addEventListener('submit', async e => {
+      e.preventDefault();
+      editorErro.textContent = '';
+      if (!fotosEditor.length) { editorErro.textContent = 'Adicione pelo menos uma foto.'; return; }
+
+      const dados = {
+        nome: campoNome.value.trim(),
+        categoria: campoCategoria.value,
+        descricao: campoDescricao.value.trim(),
+        fotos: fotosEditor
+      };
+      // limite de segurança do banco gratuito (1 MB por produto)
+      if (JSON.stringify(dados).length > 920 * 1024) {
+        editorErro.textContent = 'As fotos somadas ficaram grandes demais — remova alguma ou use imagens menores.';
+        return;
+      }
+
+      const botaoSalvar = formProduto.querySelector('[type="submit"]');
+      botaoSalvar.disabled = true;
+      botaoSalvar.textContent = 'Salvando…';
+      try {
+        if (editandoId) await fb.updateDoc(fb.doc(fb.db, 'produtos', editandoId), dados);
+        else await fb.addDoc(fb.collection(fb.db, 'produtos'), { ...dados, criadoEm: Date.now() });
+        fecharModal(modalEditor);
+        await carregarCatalogo();
+      } catch (erro) {
+        editorErro.textContent = 'Erro ao salvar: ' + (erro.message || erro);
+      }
+      botaoSalvar.disabled = false;
+      botaoSalvar.textContent = 'Salvar';
+    });
+
+    async function excluirProduto(id) {
+      if (!id) return;
+      const produto = produtosOnline.find(p => p.id === id);
+      if (!confirm('Excluir "' + (produto ? produto.nome : 'este produto') + '"? Essa ação não tem volta.')) return;
+      try {
+        await fb.deleteDoc(fb.doc(fb.db, 'produtos', id));
+        fecharModal(modalEditor);
+        await carregarCatalogo();
+      } catch (erro) {
+        alert('Erro ao excluir: ' + (erro.message || erro));
+      }
+    }
+    btnExcluir.addEventListener('click', () => excluirProduto(editandoId));
+  </script>
+</body>
+</html>
